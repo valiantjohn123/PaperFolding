@@ -58,7 +58,9 @@ public class InputHandler : MonoBehaviour
             currentTouchData.Type = InputType.Moved;
             currentTouchData.CurrentPos = currentCamera.ScreenToWorldPoint(Input.mousePosition);
             currentTouchData.CurrentPos.z = 0;
-            TouchChanged?.Invoke(currentTouchData);
+
+            if (currentTouchData.CurrentPos != currentTouchData.InitPos)
+                TouchChanged?.Invoke(currentTouchData);
         }
 
         if (Input.GetMouseButtonUp(0))
