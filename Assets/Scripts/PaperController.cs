@@ -100,9 +100,11 @@ public class PaperController : MonoBehaviour
         ResetRectZPosition(newObj.GetComponent<RectTransform>());
         Destroy(newObj.GetChild(0).GetComponent<PaperController>());
         Destroy(newObj.GetChild(0).GetComponent<InputHandler>());
+        newObj.SetAsFirstSibling();
 
         mainPaperImage.enabled = false;
         frontPageImage.enabled = false;
+
         mask.position = initMaskPos;
         mask.rotation = Quaternion.identity;
         transform.rotation = Quaternion.identity;
